@@ -93,48 +93,48 @@ class UniqueCharacters(object):
     """
 
 
-def merge_sort_first_attempt(string_to_be_sorted):
-    """ My first attempt today to write a merge sort on a string
-        *** Written using reference materials """
-    """
-        Steps:
-            1: Split strings down to sorted strings
-            2: Remerge the strings
-    """
-    # Split
-    if len(string_to_be_sorted>1)
-        mid = len(string_to_be_sorted)//2
-        left = string_to_be_sorted[: mid]
-        right = string_to_be_sorted[mid: ]
+    def merge_sort_first_attempt(self, string_to_be_sorted):
+        """ My first attempt today to write a merge sort on a string
+            *** Written using reference materials """
+        """
+            Steps:
+                1: Split strings down to sorted strings
+                2: Remerge the strings
+        """
+        # Split
+        if len(string_to_be_sorted>1):
+            mid = len(string_to_be_sorted)//2
+            left = string_to_be_sorted[: mid]
+            right = string_to_be_sorted[mid: ]
 
-        # By calling merge sort here we are able to break the string
-        # into smaller parts, merge those parts by chaning the structure
-        # of the passed in string, then combining them with larger strings
-        # Recursive programming through the middle of
-        merge_sort_first_attempt(left)
-        merge_sort_first_attempt(right)
+            # By calling merge sort here we are able to break the string
+            # into smaller parts, merge those parts by chaning the structure
+            # of the passed in string, then combining them with larger strings
+            # Recursive programming through the middle of
+            merge_sort_first_attempt(left)
+            merge_sort_first_attempt(right)
 
-        # Remerge
-        i = 0 # Left array index
-        j = 0 # right array index
-        k = 0 # entire array index
+            # Remerge
+            i = 0 # Left array index
+            j = 0 # right array index
+            k = 0 # entire array index
 
-        # Compare each value and add the smallest to the array.
-        # Cotinue doing so until its complete
-        while i < len(left) and j < len(right):
-            if left[i] > right[j]:
-                string_to_be_sorted[k] = right[j]
-                j += 1
-            if left[i] < right[j]:
+            # Compare each value and add the smallest to the array.
+            # Cotinue doing so until its complete
+            while i < len(left) and j < len(right):
+                if left[i] > right[j]:
+                    string_to_be_sorted[k] = right[j]
+                    j += 1
+                if left[i] < right[j]:
+                    string_to_be_sorted[k] = left[i]
+                    i += 1
+                k += 1
+
+            while i < len(left):
                 string_to_be_sorted[k] = left[i]
                 i += 1
-            k += 1
-
-        while i < len(left):
-            string_to_be_sorted[k] = left[i]
-            i += 1
-            k += 1
-        while j < len(right):
-            string_to_be_sorted[k] = right[i]
-            j += 1
-            k += 1
+                k += 1
+            while j < len(right):
+                string_to_be_sorted[k] = right[i]
+                j += 1
+                k += 1
