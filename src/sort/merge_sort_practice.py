@@ -34,8 +34,6 @@ def merge_sort(unsorted):
             j = j + 1
             k = k + 1
 
-        print 'Merge Complete'
-
 
 def merge_sort_2(unsorted):
     """ Merge Sort Round 2, extra practice
@@ -73,6 +71,39 @@ def merge_sort_2(unsorted):
             k = k + 1
 
 
+def merge_sort_3(alist):
+    """ Round 3 """
+    if len(alist) > 1:
+        mid = len(alist) // 2
+        left = alist[: mid]
+        right = alist[mid: ]
+
+        merge_sort_3(left)
+        merge_sort_3(right)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while len(left) > i and len(right) > j:
+            if left[i] < right[j]:
+                alist[k] = left[i]
+                i = i + 1
+            else:
+                alist[k] = right[j]
+                j = j + 1
+            k = k + 1
+
+        while len(left) > i:
+            alist[k] = left[i]
+            i = i + 1
+            k = k + 1
+
+        while len(right) > j:
+            alist[k] = right[j]
+            j = j + 1
+            k = k + 1
+
 if __name__=='__main__':
-    merge_sort_2(unsorted)
-    print unsorted
+    merge_sort_3(unsorted)
+    print(unsorted)
