@@ -89,7 +89,10 @@ def quicksort_helper(alist, first, last):
         quicksort_helper(alist, split_point + 1, last)
 
 def partition(alist, first, last):
-    """ Most of the logic in the quicksort """
+    """ Most of the logic in the quicksort 
+
+        THIS IS WRONG, THE SWITCH AT THE END IS INCORRECT
+    """
     pivot_value = alist[0]
     leftmark = first + 1
     rightmark = last
@@ -114,11 +117,50 @@ def partition(alist, first, last):
     alist[rightmark] = temp
     return rightmark
 
-    # How do we know if its done?
-    # What do we return
+
+
+
+
+def quicksort3(alist):
+    """ 3rd Round of Quicksort practice """
+    quicksort_helper(alist, 0, len(alist)-1)
+
+
+
+def quicksort_helper(alist, first, last):
+    """ Handles the Recursive aspect of quicksort """
+    if first < last:
+        split_point = partition3(alist, first, last)
+        quicksort_helper(alist, first, split_point - 1)
+        quicksort_helper(alist, split_point + 1, last)
+
+
+def partition3(alist, first, last):
+    """ Run the actual quick sort partition process """
+    pivot_value = alist[first]
+    leftmark = alist[first + 1]
+    rightmark = alist[last]
+
+    done = False
+    while not done:
+        while alist[leftmark] < pivot_value and leftmark < rightmark:
+            leftmark += 1
+        while alist[rightmark] > pivot_value and leftmark < rightmark:
+            rightmark -= 1
+        # Why is this the complete condiditon
+        if rightmark < leftmark:
+            done = True
+        else:
+            temp = alist[rightmark]
+            alist[rightmark] = alist[leftmark]
+            alist[leftmark] = temp
+    temp = alist[rightmark]
+    alist[rightmark] = pivot_value
+    alist[first] = temp
     return rightmark
 
+
 if __name__ == '__main__':
-    quicksort2(alist)
+    quicksort3(alist)
     print(alist)
 

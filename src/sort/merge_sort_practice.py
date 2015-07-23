@@ -104,6 +104,44 @@ def merge_sort_3(alist):
             j = j + 1
             k = k + 1
 
+
+def mergesort4(alist):
+    """ Round four Leggos """
+    """
+        Written Perfectly on the first try in 3 minutes w0000000t
+    """
+    if len(alist)>1:
+        mid = len(alist)//2
+        left = alist[:mid]
+        right = alist[mid:]
+
+        mergesort4(left)
+        mergesort4(right)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while len(left) > i and len(right) > j:
+            if left[i] < right[j]:
+                alist[k] = left[i]
+                i = i + 1
+            else:
+                alist[k] = right[j]
+                j = j + 1
+            k = k + 1
+
+        while len(left) > i:
+            alist[k] = left[i]
+            i += 1
+            k += 1
+
+        while len(right) > j:
+            alist[k] = right[j]
+            j += 1
+            k += 1
+
+
 if __name__=='__main__':
-    merge_sort_3(unsorted)
+    mergesort4(unsorted)
     print(unsorted)
