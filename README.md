@@ -1,5 +1,5 @@
-# practice_makes_perfect
-My daily python practice
+# Practice_makes_perfect
+My daily coding practice
 
 ### Practice
 I will be practicing a variety of topics :
@@ -7,4 +7,7 @@ I will be practicing a variety of topics :
 * Practicing Algorithms
 * Reviewing Concepts
 * Best Practices
-* Architecture 
+* Architecture
+
+I am tracking my progress on computer science concepts on a Trello board:
+https://trello.com/b/otwMtLoD/computer-science-concepts
