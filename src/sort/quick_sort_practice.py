@@ -72,8 +72,95 @@ def partition(alist, first, last):
 
     return rightmark
 
+
 alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
+
+def quicksort2(alist):
+    """ User facing quicksort """
+    quick_sort_helper(alist, 0, alist[-1])
+
+
+def quicksort_helper(alist, first, last):
+    """  Recursive portion of the quick sort """
+    if first < last:
+        split_point = partition(alist, first, last)
+
+        quicksort_helper(alist, first, split_point - 1)
+        quicksort_helper(alist, split_point + 1, last)
+
+def partition(alist, first, last):
+    """ Most of the logic in the quicksort 
+
+        THIS IS WRONG, THE SWITCH AT THE END IS INCORRECT
+    """
+    pivot_value = alist[0]
+    leftmark = first + 1
+    rightmark = last
+    done = False
+
+    while not done:
+        # What do we check now?
+        while alist[leftmark] < pivot_value and leftmark<=rightmark:
+            leftmark = leftmark + 1
+        while alist[leftmark] < pivot_value and leftmark<=rightmark:
+            rightmark = rightmark - 1
+
+        if rightmark < leftmark:
+            done = True
+        else :
+            temp = alist[leftmark]
+            alist[leftmark] = alist[rightmark]
+            alist[rightmark] = temp
+
+    temp = alist[leftmark]
+    alist[leftmark] = alist[rightmark]
+    alist[rightmark] = temp
+    return rightmark
+
+
+
+
+
+def quicksort3(alist):
+    """ 3rd Round of Quicksort practice """
+    quicksort_helper(alist, 0, len(alist)-1)
+
+
+
+def quicksort_helper(alist, first, last):
+    """ Handles the Recursive aspect of quicksort """
+    if first < last:
+        split_point = partition3(alist, first, last)
+        quicksort_helper(alist, first, split_point - 1)
+        quicksort_helper(alist, split_point + 1, last)
+
+
+def partition3(alist, first, last):
+    """ Run the actual quick sort partition process """
+    pivot_value = alist[first]
+    leftmark = alist[first + 1]
+    rightmark = alist[last]
+
+    done = False
+    while not done:
+        while alist[leftmark] < pivot_value and leftmark < rightmark:
+            leftmark += 1
+        while alist[rightmark] > pivot_value and leftmark < rightmark:
+            rightmark -= 1
+        # Why is this the complete condiditon
+        if rightmark < leftmark:
+            done = True
+        else:
+            temp = alist[rightmark]
+            alist[rightmark] = alist[leftmark]
+            alist[leftmark] = temp
+    temp = alist[rightmark]
+    alist[rightmark] = pivot_value
+    alist[first] = temp
+    return rightmark
+
+
 if __name__ == '__main__':
-    quick_sort(alist)
+    quicksort3(alist)
     print(alist)
 

@@ -183,6 +183,38 @@ def mergesort5(alist):
     return alist
 
 
+def mergesort6(alist):
+    """ Merge sort attempt 6 """
+    if len(alist) > 1:
+        mid = len(alist) // 2
+        left = alist[: mid]
+        right = alist[mid:]
+
+        mergesort6(left)
+        mergesort6(right)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while len(left) > i and len(right) > j:
+            if left[i] < right[j]:
+                alist[k] = left[i]
+                i = i + 1
+            else:
+                alist[k] = right[j]
+                j = j + 1
+            k = k + 1
+        while len(left) > i:
+            alist[k] = left[i]
+            i = i + 1
+            k = k + 1
+        while  len(right) > j:
+            alist[k] = right[j]
+            j = j + 1
+            k = k + 1
+
+
 if __name__ == '__main__':
-    mergesort5(unsorted)
+    mergesort6(unsorted)
     print(unsorted)
