@@ -160,6 +160,49 @@ def partition3(alist, first, last):
     return rightmark
 
 
+
+
+
+
+
+
+
+
+
+
+
+def quicksort4(alist):
+    """ Round 4 """
+    """ First call the starting point for the recursion """
+    quicksort_helper4(alist, 0, len(alist)-1)
+
+def quicksort_helper4(alist, first, last):
+    """ This function handles the recursion
+
+    """
+    if first < last:
+        split_point = partition4(alist, first, last)
+        quicksort_helper4(alist, first, split_point)
+        quicksort_helper4(alist, split_point, last)
+
+
+def partition4(alist, first, last):
+    """ This handles the actual quick sort logic of the algorithm
+        Starting with a left mark and a right mark we slowly move them inward
+        constantly comparing and if we find that one is on the wrong side,
+        then we switch them.
+    """
+    pivot_value = alist[first]
+    leftmark = alist[first + 1]
+    rightmark = alist[last]
+    done = False
+    while not done:
+        pass
+
+
+
+
+
 if __name__ == '__main__':
     quicksort3(alist)
     print(alist)
