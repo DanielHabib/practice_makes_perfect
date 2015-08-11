@@ -69,11 +69,9 @@ def partition(alist, first, last):
     temp = alist[first]
     alist[first] = alist[rightmark]
     alist[rightmark] = temp
-
     return rightmark
 
 
-alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
 
 def quicksort2(alist):
     """ User facing quicksort """
@@ -88,7 +86,7 @@ def quicksort_helper(alist, first, last):
         quicksort_helper(alist, first, split_point - 1)
         quicksort_helper(alist, split_point + 1, last)
 
-def partition(alist, first, last):
+def partition2(alist, first, last):
     """ Most of the logic in the quicksort 
 
         THIS IS WRONG, THE SWITCH AT THE END IS INCORRECT
@@ -171,8 +169,8 @@ def quicksort_helper4(alist, first, last):
     """
     if first < last:
         split_point = partition4(alist, first, last)
-        quicksort_helper4(alist, first, split_point)
-        quicksort_helper4(alist, split_point, last)
+        quicksort_helper4(alist, first, split_point - 1)
+        quicksort_helper4(alist, split_point + 1, last)
 
 
 def partition4(alist, first, last):
@@ -181,19 +179,38 @@ def partition4(alist, first, last):
         constantly comparing and if we find that one is on the wrong side,
         then we switch them.
     """
+
     pivot_value = alist[first]
-    leftmark = alist[first + 1]
-    rightmark = alist[last]
+    leftmark = first + 1
+    rightmark = last
     done = False
+    print 'new'
+    print 'leftmark: ' + str(leftmark)
+    print 'rightmark:' + str(rightmark)
     while not done:
-        while alist[leftmark] < pivot_value and leftmark < rightmark:
-            pass
+        """ This handles the moving of the left and right marks """
+        """ The ORDER CONDITIONALS COME IN IN THE AND STATEMENTS MATTERS """
+        while leftmark <= rightmark and alist[leftmark] <= pivot_value :
+            leftmark = leftmark + 1
+            print leftmark
+        while alist[rightmark] >= pivot_value and rightmark >= leftmark:
+            rightmark = rightmark - 1
+
+        if rightmark < leftmark:
+            done = True
+        else:
+            temp = alist[leftmark]
+            alist[leftmark] = alist[rightmark]
+            alist[rightmark] = temp
+    temp = alist[first]
+    alist[first] = alist[rightmark]
+    alist[rightmark] = temp
+    return rightmark
 
 
-
-
+alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
 
 if __name__ == '__main__':
-    quicksort3(alist)
+    quicksort4(alist)
     print(alist)
 
