@@ -160,17 +160,6 @@ def partition3(alist, first, last):
     return rightmark
 
 
-
-
-
-
-
-
-
-
-
-
-
 def quicksort4(alist):
     """ Round 4 """
     """ First call the starting point for the recursion """
@@ -197,7 +186,8 @@ def partition4(alist, first, last):
     rightmark = alist[last]
     done = False
     while not done:
-        pass
+        while alist[leftmark] < pivot_value and leftmark < rightmark:
+            pass
 
 
 
