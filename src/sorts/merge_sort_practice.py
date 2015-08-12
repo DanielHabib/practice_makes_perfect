@@ -215,6 +215,38 @@ def mergesort6(alist):
             k = k + 1
 
 
+def mergesort7(alist):
+    """ Round 7 """
+    if len(alist) > 1:
+        mid = len(alist)//2
+        left = alist[: mid]
+        right = alist[mid:]
+
+        mergesort7(left)
+        mergesort7(right)
+
+        i = 0 # left
+        j = 0 # right
+        k = 0 # Full list
+
+        while len(left) > i and len(right) > j:
+            if left[i] < right[j]:
+                alist[k] = left[i]
+                i = i + 1
+            else:
+                alist[k] = right[j]
+                j = j + 1
+            k = k + 1
+        while len(left) > i:
+            alist[k] = left[i]
+            i = i + 1
+            k = k + 1
+        while len(right) > j:
+            alist[k] = right[j]
+            j = j + 1
+            k = k + 1
+
+
 if __name__ == '__main__':
-    mergesort6(unsorted)
+    mergesort7(unsorted)
     print(unsorted)
