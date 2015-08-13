@@ -246,7 +246,45 @@ def mergesort7(alist):
             j = j + 1
             k = k + 1
 
+def mergesort8(alist):
+    """
+        time:
+            2:41
+        errors:
+            I accidentally ordered them in descending order because
+            I used the wrong conditional
+
+    """
+    if len(alist) > 1:
+        mid = len(alist)//2
+        left = alist[: mid]
+        right = alist[mid:]
+
+        mergesort8(left)
+        mergesort8(right)
+
+        i = 0
+        j = 0
+        k = 0
+
+        while len(left) > i and len(right) > j:
+            if left[i] < right[j]:
+                alist[k] = left[i]
+                i = i + 1
+            else:
+                alist[k] = right[j]
+                j = j + 1
+            k = k + 1
+        while len(left) > i:
+            alist[k] = left[i]
+            i = i + 1
+            k = k + 1
+        while len(right)> j:
+            alist[k] = right[j]
+            j = j + 1
+            k = k + 1
+
 
 if __name__ == '__main__':
-    mergesort7(unsorted)
+    mergesort8(unsorted)
     print(unsorted)
