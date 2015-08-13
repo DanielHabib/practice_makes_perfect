@@ -241,32 +241,31 @@ def partition5(alist, first, last):
     return rightmark
 
 
-
-
-
-
-
-
-
-
 def quicksort7(alist):
+    """
+        time: 5:40
+        error: 
+            Bad implementation on quicksort_helper7
+            The conditional in quicksort_helper7 should be first < last
+    """
     quicksort_helper7(alist, 0, len(alist) - 1)
 
 def quicksort_helper7(alist, first, last):
-    if len(alist) > 1:
+    if first < last:
         split_point = partition7(alist, first, last)
         quicksort_helper7(alist, first, split_point - 1)
-        quicksort_helper7(alist, first, split_point + 1)
+        quicksort_helper7(alist, split_point + 1, last)
 
 def partition7(alist, first, last):
     done = False
     pivot_value = alist[first]
     leftmark = first + 1
     rightmark = last
+    print 'start' + str(rightmark)
     while not done:
         while leftmark <= rightmark and alist[leftmark] <= pivot_value:
             leftmark = leftmark + 1
-        while rightmark >= leftmark and alist[rightmark] >= pivot_value:
+        while leftmark <= rightmark and alist[rightmark] >= pivot_value:
             rightmark = rightmark - 1
 
         if leftmark > rightmark:
@@ -275,6 +274,7 @@ def partition7(alist, first, last):
             temp = alist[leftmark]
             alist[leftmark] = alist[rightmark]
             alist[rightmark] = temp
+    print rightmark
     temp = alist[rightmark]
     alist[rightmark] = pivot_value
     alist[first] = temp
@@ -282,47 +282,9 @@ def partition7(alist, first, last):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
 
 if __name__ == '__main__':
-    quicksort4(alist)
+    quicksort7(alist)
     print(alist)
 
