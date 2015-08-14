@@ -116,9 +116,6 @@ def partition2(alist, first, last):
     return rightmark
 
 
-
-
-
 def quicksort3(alist):
     """ 3rd Round of Quicksort practice """
     quicksort_helper(alist, 0, len(alist)-1)
@@ -162,6 +159,7 @@ def quicksort4(alist):
     """ Round 4 """
     """ First call the starting point for the recursion """
     quicksort_helper4(alist, 0, len(alist)-1)
+
 
 def quicksort_helper4(alist, first, last):
     """ This function handles the recursion
@@ -218,6 +216,7 @@ def quicksort_helper5(alist, first, last):
         quicksort_helper5(alist, first, split_point - 1)
         quicksort_helper5(alist, split_point + 1, last)
 
+
 def partition5(alist, first, last):
     done = False
     pivot_value = alist[first]
@@ -244,17 +243,19 @@ def partition5(alist, first, last):
 def quicksort7(alist):
     """
         time: 5:40
-        error: 
+        error:
             Bad implementation on quicksort_helper7
             The conditional in quicksort_helper7 should be first < last
     """
     quicksort_helper7(alist, 0, len(alist) - 1)
+
 
 def quicksort_helper7(alist, first, last):
     if first < last:
         split_point = partition7(alist, first, last)
         quicksort_helper7(alist, first, split_point - 1)
         quicksort_helper7(alist, split_point + 1, last)
+
 
 def partition7(alist, first, last):
     done = False
@@ -282,9 +283,52 @@ def partition7(alist, first, last):
 
 
 
+def qs8(alist):
+    """ Drunk, forgot to set a timer YOLOSWAG9GAG """
+    qs8h(alist, 0, len(alist) - 1)
+
+
+def qs8h(alist, first, last):
+    if first < last:
+        split_point = partition8(alist, first, last)
+        qs8h(alist, first, split_point - 1)
+        qs8h(alist, split_point + 1, last)
+
+def partition8(alist, first, last):
+    done = False
+    pivot_value = alist[first]
+    leftmark = first + 1
+    rightmark = last
+    while not done:
+        while leftmark <= rightmark and alist[leftmark] <= pivot_value:
+            leftmark = leftmark + 1
+        while leftmark <= rightmark and alist[rightmark] >=pivot_value:
+            rightmark = rightmark - 1
+        if leftmark > rightmark:
+            done = True
+        else:
+            temp = alist[leftmark]
+            alist[leftmark] = alist[rightmark]
+            alist[rightmark] = temp
+    temp = alist[rightmark]
+    alist[rightmark] = alist[first]
+    alist[first] = temp
+    return rightmark
+
+
+
+
+
+
+
+
+
+
 alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
 
+
+
 if __name__ == '__main__':
-    quicksort7(alist)
+    qs8(alist)
     print(alist)
 
