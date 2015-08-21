@@ -316,22 +316,11 @@ def partition8(alist, first, last):
     return rightmark
 
 
-
-
-
-
-
-
-
-
-
-
-
 def qs9(alist):
     qs9_helper(alist, 0, len(alist) - 1)
 
 def qs9_helper(alist, first, last):
-    if first > last: # Why?
+    if first < last: # Why?
         split_point = partition9(alist, first, last)
         qs9_helper(alist, first, split_point - 1)
         qs9_helper(alist, split_point + 1, last)
@@ -361,36 +350,9 @@ def partition9(alist, first, last):
     return rightmark
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
 
 if __name__ == '__main__':
-    qs8(alist)
+    qs9(alist)
     print(alist)
 
