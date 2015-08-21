@@ -285,11 +285,16 @@ def mergesort8(alist):
             k = k + 1
 
 
-
-
 def mergesort9(alist):
+    """
+        time:
+            2:39
+        errors:
+            Forgot to put the len() on alist condiitonal
+
+    """
     if len(alist) > 1:
-        mid = alist//2
+        mid = len(alist)//2
         left = alist[: mid]
         right = alist[mid:]
 
@@ -316,23 +321,6 @@ def mergesort9(alist):
             k = k + 1
             j = j + 1
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
-    mergesort8(unsorted)
+    mergesort9(unsorted)
     print(unsorted)
