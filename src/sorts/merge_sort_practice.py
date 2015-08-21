@@ -285,6 +285,54 @@ def mergesort8(alist):
             k = k + 1
 
 
+
+
+def mergesort9(alist):
+    if len(alist) > 1:
+        mid = alist//2
+        left = alist[: mid]
+        right = alist[mid:]
+
+        mergesort9(left)
+        mergesort9(right)
+        i = 0
+        j = 0
+        k = 0
+
+        while i < len(left) and j < len(right):
+            if left[i] < right[j]:
+                alist[k] = left[i]
+                i = i + 1
+            else:
+                alist[k] = right[j]
+                j = j + 1
+            k = k + 1
+        while i < len(left):
+            alist[k] = left[i]
+            k = k + 1
+            i = i + 1
+        while j < len(right):
+            alist[k] = right[j]
+            k = k + 1
+            j = j + 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     mergesort8(unsorted)
     print(unsorted)
