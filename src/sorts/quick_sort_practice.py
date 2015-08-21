@@ -318,7 +318,10 @@ def partition8(alist, first, last):
 
 def qs9(alist):
     """
-        
+        time:
+            5:19
+        errors:
+            qs9_helper conditional was flawed
     """
     qs9_helper(alist, 0, len(alist) - 1)
 
