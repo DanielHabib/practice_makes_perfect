@@ -349,6 +349,16 @@ def partition9(alist, first, last):
             rightmark = rightmark - 1
 
         if leftmark > rightmark: # Why
+            done = True
+        else:
+            temp = alist[leftmark]
+            alist[leftmark] = alist[rightmark]
+            alist[rightmark] = temp
+
+    temp = pivot_value
+    alist[first] = alist[rightmark]
+    alist[rightmark] = temp
+    return rightmark
 
 
 
