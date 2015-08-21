@@ -317,6 +317,9 @@ def partition8(alist, first, last):
 
 
 def qs9(alist):
+    """
+        
+    """
     qs9_helper(alist, 0, len(alist) - 1)
 
 def qs9_helper(alist, first, last):
