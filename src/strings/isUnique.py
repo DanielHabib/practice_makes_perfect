@@ -37,7 +37,9 @@ def isUnique(stringVal):
             charHash[char] = 1
     return True
 
-
+def uniqueHelper(stringVal):
+    alist = list(stringVal)
+    return isUniqueNoADS(alist)
 def isUniqueNoADS(stringVal):
     """
         TC : O(Nlog(N))
@@ -84,8 +86,8 @@ if __name__ == '__main__':
     """ Not Unique charset """
     stringVal = "qwertyuiopasdfgjklzxcvbnmr"
     assert not isUnique(stringVal)
-    assert not isUniqueNoADS(stringVal)
+    assert not uniqueHelper(stringVal)
     """ Unique charset """
     stringVal = "qwertyuiopasdfgjklzxcvbnm"
     assert isUnique(stringVal)
-    assert isUniqueNoADS(stringVal)
+    assert uniqueHelper(stringVal)
