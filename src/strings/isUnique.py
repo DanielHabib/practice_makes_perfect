@@ -36,3 +36,35 @@ def isUnique(stringVal):
         else:
             charHash[char] = 1
     return True
+
+def isUniqueNoADS(stringVal):
+    if len(stringVal):
+        mid = len(stringVal) // 2
+        left = stringVal[: mid]
+        right = stringVal[mid:]
+
+        if !(isUniqueNoADS(left)):
+            return False
+        if !(isUniqueNoADS(right)):
+            return False
+        i = 0
+        j = 0
+        k = 0
+        while len(left) > i and len(right) > j:
+            if left[i] == right[j]:
+                return False
+            elif left[i] < right[j]:
+                stringVal[k] = left[i]
+                i = i + 1
+            else:
+                stringVal[k] = right[j]
+                j = j + 1
+            k = k + 1
+        while len(left) > i:
+            stringVal[k] = left[i]
+            i = i + 1
+            k = k + 1
+        while len(right) > j:
+            stringVal[k] = right[j]
+            j = j + 1
+            k = k + 1
