@@ -1,4 +1,6 @@
 """ Problem 1.2 """
+from unittest import TestCase
+
 """
     Problem:
         Determine if two strings are permutations of each other
@@ -28,3 +30,14 @@ def isPermuation(string1, string2):
         except:
             return False
     return True
+
+class isPermutationTest(TestCase):
+    def testSuccesfulPermutation(self):
+        string1 = "asdfghjkl"
+        string2 = "lkjhgfdsa"
+        assert isPermuation(string1, string2)
+
+    def testNonPermutation(self):
+        string1 = "asdfghjkl"
+        string2 = "lkjhgpdsa"
+        assert not isPermuation(string1, string2)
