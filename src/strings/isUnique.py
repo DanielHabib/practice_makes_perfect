@@ -37,6 +37,7 @@ def isUnique(stringVal):
             charHash[char] = 1
     return True
 
+
 def isUniqueNoADS(stringVal):
     """
         TC : O(Nlog(N))
@@ -74,11 +75,14 @@ def isUniqueNoADS(stringVal):
             stringVal[k] = right[j]
             j = j + 1
             k = k + 1
+        return True
+
+
 if __name__ == '__main__':
     """ Not Unique charset """
     stringVal = "qwertyuiopasdfgjklzxcvbnmr"
-    assert !isUnique(stringVal)
-    assert !isUniqueNoADS(stringVal)
+    assert not isUnique(stringVal)
+    assert not isUniqueNoADS(stringVal)
     """ Unique charset """
     stringVal = "qwertyuiopasdfgjklzxcvbnm"
     assert isUnique(stringVal)
