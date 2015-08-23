@@ -11,4 +11,4 @@ I will be practicing a variety of topics :
 * Coding Problems
 
 I am tracking my progress on computer science concepts on a Trello board:
-https://trello.com/b/otwMtLoD/computer-science-concepts
+https://trello.com/b/otwMtLoD/compsci
