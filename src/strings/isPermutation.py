@@ -42,9 +42,14 @@ class isPermutationTest(TestCase):
     def testSuccesfulPermutation(self):
         string1 = "asdfghjkl"
         string2 = "lkjhgfdsa"
-        assert isPermuation(string1, string2)
+        self.assertTrue(isPermuation(string1, string2))
 
     def testNonPermutation(self):
         string1 = "asdfghjkl"
         string2 = "lkjhgpdsa"
-        assert not isPermuation(string1, string2)
+        self.assertFalse(isPermuation(string1, string2))
+
+    def testInconsistentLengthConditional(self):
+        string1 = "blah"
+        string2 = "da"
+        self.assertFalse(isPermuation(string1, string2))
