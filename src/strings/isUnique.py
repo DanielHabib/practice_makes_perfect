@@ -38,14 +38,20 @@ def isUnique(stringVal):
     return True
 
 def isUniqueNoADS(stringVal):
+    """
+        TC : O(Nlog(N))
+        OC : O(1)
+        Mistakes:
+            Still forgot to check for base cases. [-1, 0, trillion]
+    """
     if len(stringVal):
         mid = len(stringVal) // 2
         left = stringVal[: mid]
         right = stringVal[mid:]
 
-        if !(isUniqueNoADS(left)):
+        if (!isUniqueNoADS(left)):
             return False
-        if !(isUniqueNoADS(right)):
+        if (!isUniqueNoADS(right)):
             return False
         i = 0
         j = 0
@@ -68,3 +74,12 @@ def isUniqueNoADS(stringVal):
             stringVal[k] = right[j]
             j = j + 1
             k = k + 1
+if __name__ == '__main__':
+    """ Not Unique charset """
+    stringVal = "qwertyuiopasdfgjklzxcvbnmr"
+    assert !isUnique(stringVal)
+    assert !isUniqueNoADS(stringVal)
+    """ Unique charset """
+    stringVal = "qwertyuiopasdfgjklzxcvbnm"
+    assert isUnique(stringVal)
+    assert isUniqueNoADS(stringVal)
