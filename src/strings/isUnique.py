@@ -43,9 +43,11 @@ def isUniqueNoADS(stringVal):
         TC : O(Nlog(N))
         OC : O(1)
         Mistakes:
-            Still forgot to check for base cases. [-1, 0, trillion]
+            1. Still forgot to check for base cases. [-1, 0, trillion]
+            2. messed up base case conditional on merge sort
+            3. index assisgnment isn't available on strings in python
     """
-    if len(stringVal):
+    if len(stringVal) > 1:
         mid = len(stringVal) // 2
         left = stringVal[: mid]
         right = stringVal[mid:]
@@ -75,7 +77,7 @@ def isUniqueNoADS(stringVal):
             stringVal[k] = right[j]
             j = j + 1
             k = k + 1
-        return True
+    return True
 
 
 if __name__ == '__main__':
