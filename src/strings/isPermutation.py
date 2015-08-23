@@ -5,8 +5,9 @@
 """
 def isPermuation(string1, string2):
     """
-        SC:
-        TC:
+        SC: O(N), N being the length of either string, since if they aren't
+            equal then it is constant time
+        TC: O(N)
 
     """
     if len(string1) != len(string2):
