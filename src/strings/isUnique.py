@@ -49,9 +49,9 @@ def isUniqueNoADS(stringVal):
         left = stringVal[: mid]
         right = stringVal[mid:]
 
-        if (!isUniqueNoADS(left)):
+        if not isUniqueNoADS(left):
             return False
-        if (!isUniqueNoADS(right)):
+        if not isUniqueNoADS(right):
             return False
         i = 0
         j = 0
