@@ -7,9 +7,15 @@ from unittest import TestCase
 """
 def isPermuation(string1, string2):
     """
-        SC: O(N), N being the length of either string, since if they aren't
+        Time Complexity: O(N), N being the length of either string, since if they aren't
             equal then it is constant time
-        TC: O(N)
+        Space Complexity: O(N)
+        Alt Soln :
+            It would be possible to to sort both strings since this would
+            make their values line up perfectly if they were permutations of
+            each other. Downside to that is the sort would run in O(Nlog(N)).
+            This would be the solution without additional datastructures.
+            Space Complexity would be constant.
 
     """
     if len(string1) != len(string2):
