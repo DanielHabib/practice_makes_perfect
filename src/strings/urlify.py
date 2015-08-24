@@ -1,16 +1,23 @@
 """ 1.3 """
-"""
-Replace all blank spaces in a string with %20
-"""
+from unittest import TestCase
 
+"""
+Replace all blank spaces in the string with ‘%20’ without the help of a helper function
 
-def urlify(stringVal):
-    """
-        Time Complexity:
-        Space Complexity:
-    """
-    alist = list(stringVal)
-    for index, val in alist.iteritems():
-        if val == " ":
+Notes:
+Solve this problem in place without the use of additional data structures
+BCR:
+Time Complexity O(N)
+"""
+def urlify(astring):
+    alist = list(astring)
+    for index, char  in alist.iteritems():
+        if char == " ":
             alist[index] = "%20"
     return "".join(alist)
+
+
+
+
+class testUrlify(TestCase):
+    """testUrlify for succesful and unsuccesful cases"""
