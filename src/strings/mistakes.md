@@ -17,3 +17,4 @@
 * Incorrectly Wrote conditionals when Sorting
 * Misinterpreted `Permutation` as meaning a re-order with variable length aka it could be shorter. This is not the case, permutation is a re-order with the same elements, no more no less.
 * `hash` is a reserved keyword in python
+* I attempted to use the `iteritems` property on a array, instead you need to use enumerate to access both the index and value cleanly
