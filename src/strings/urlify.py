@@ -1,6 +1,6 @@
 """ 1.3 """
 from unittest import TestCase
-
+ 
 """
 Replace all blank spaces in the string with ‘%20’ without the help of a helper function
 
@@ -20,4 +20,13 @@ def urlify(astring):
 
 
 class testUrlify(TestCase):
-    """testUrlify for succesful and unsuccesful cases"""
+    """testUrlify for succesful """
+    def testSuccesfulJoin(self):
+        """ Test for a successful join on urlify """
+        stringVal = "blargin flargin"
+        expectedResult = "blargin%20flargin"
+
+        result = urlify(stringVal)
+
+        self.assertEqual(stringVal, expectedResult)
+
