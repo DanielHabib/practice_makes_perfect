@@ -30,12 +30,10 @@ def hasPalindromeAndPermutation(self, string):
     """ 1
         TC: O(((N-1)/2)!)
     """
+    if len(string) % 2 != 1:
+        return False
+    dictVal = createArrayForPermutation(string)
 
-
-def checkIfValidString(self, string):
-    """ 2
-        TC: O(N)
-    """
 
 
 def createArrayForPermutation(self,string):
