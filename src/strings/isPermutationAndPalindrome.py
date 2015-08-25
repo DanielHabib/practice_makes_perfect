@@ -8,6 +8,7 @@
 
     Steps:
         Prelim: ASCII or Unicode? assume Unicode
+                Does WhiteSpace Matter? assume no
         1. Loop through once and put the amount of each letter into a
             dictionary
         2. loop through all values in dictionary making sure that all
@@ -19,8 +20,7 @@
             we have recorded in the dictionary.
         4. Now we must find all the permutations of half the array.
         5. Whats the fastest way to find all of the permutations of an
-            the array?
-
-
+            the array? O((N-1/2)!)
+        That isn't O(N) time but it is definitely an improvement over 
 """
 
