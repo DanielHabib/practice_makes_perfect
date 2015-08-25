@@ -21,6 +21,30 @@
         4. Now we must find all the permutations of half the array.
         5. Whats the fastest way to find all of the permutations of an
             the array? O((N-1/2)!)
-        That isn't O(N) time but it is definitely an improvement over 
+        That isn't O(N) time but it is definitely an improvement over the brute
+        force method, lets develop this
 """
 
+
+def hasPalindromeAndPermutation(self, string):
+    """ 1
+        TC: O(((N-1)/2)!)
+    """
+
+
+def checkIfValidString(self, string):
+    """ 2
+        TC: O(N)
+    """
+
+
+def createArrayForPermutation(self,string):
+    """ 4
+        TC: O(N)
+    """
+
+
+def findPermutations(self, alist):
+    """ 5
+        TC: O(((N-1)/2))
+    """
