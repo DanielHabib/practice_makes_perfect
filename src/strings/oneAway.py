@@ -20,6 +20,10 @@ def oneAway(str1, str2):
             the two different mutations, when trying to tackle both at the
             same time it feels near impossible. Once separated
 
+        Time Complexity: O(N)
+        Space Complexity: O(N), can become O(1) by increasing the complexity
+                of the second loop
+
     """
     if abs(len(str1) - len(str2)) > 1:
         return False
