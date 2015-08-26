@@ -19,10 +19,7 @@
         4. Then we want to take stock, create an array of half of the values
             we have recorded in the dictionary.
         4. Now we must find all the permutations of half the array.
-        5. Whats the fastest way to find all of the permutations of an
-            the array? O((N-1/2)!)
-        That isn't O(N) time but it is definitely an improvement over the brute
-        force method, lets develop this
+
 """
 
 
@@ -30,6 +27,7 @@ def hasPalindromeAndPermutation(self, string):
     """ 1
         TC: O(((N-1)/2)!)
     """
+
     if len(string) % 2 != 1:
         return False
     dictVal = createArrayForPermutation(string)
