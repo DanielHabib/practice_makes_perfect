@@ -18,7 +18,10 @@ def stringCompression(str1):
             1.5: Check for unphased string
             2: Create string
     """
-
+    array1 = takeStock(str1)
+    if len(array1) == len(str1):
+        return str1
+    return createString(array1)
 
 def takeStock(str1):
     gold = "1"
@@ -33,3 +36,7 @@ def takeStock(str1):
             goldIndex + 1
             elem = [val, 1]
             array1[goldIndex] = elem
+    return array1
+
+
+def createString(array1):
