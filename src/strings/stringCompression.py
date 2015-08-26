@@ -21,10 +21,15 @@ def stringCompression(str1):
             2: Create string
     """
     array1 = takeStock(str1)
+
     if len(array1) == len(str1):
+        flag = False
         for l1 in array1:
             if l1[2] != 1:
-                return str1
+                flag = True
+                break
+    if not flag:
+        reutn str1
     return createString(array1)
 
 def takeStock(str1):
