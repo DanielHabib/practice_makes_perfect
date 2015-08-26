@@ -11,6 +11,7 @@
 * Outline the process of solving the problem into easily digestable steps
 * After writing algorithm, consider the extreme Cases
 * Test a data set if possible
+* Break your code up into smaller functions, identify clear steps and then segment them properly
 
 ## Mistakes
 * Strings cannot have index assignment in python
