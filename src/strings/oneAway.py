@@ -1,5 +1,7 @@
 """ 1.5 """
 
+from unittest import TestCase
+
 """
     Time: 20:06
     Problem: Given 2 strs, find if they are 1 or 0 edits away from each other
@@ -42,4 +44,18 @@ def oneAway(str1, str2):
                 if mistake == 1:
                     return False
                 mistake = 1
+    return True
 
+
+class TestOneAway(TestCase):
+
+    def testSuccesfulOneAway(self):
+        str1 = "blargin"
+        str2 = "flargin"
+        self.assertTrue(oneAway(str1, str2))
+
+    def testFailureOneAway(self):
+        str1 = "blargin"
+        str2 = "mcgoogles"
+        self.assertFalse(oneAway(str1, str2))
+        str2 = ""
