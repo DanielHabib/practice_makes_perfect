@@ -2,18 +2,17 @@
 
 from datastructures.linkedlist import LinkedList, Node
 from unittest import TestCase
-"""
-    BCR:O(N)
-    Steps:
-        1. Loop through the linked list and count the length
-        2. Second loop through and only get to the N-1-k element
 
-"""
 
 def returnKth(k, linkedlist):
     """
-        Time Complexity: O(N)
-        Space Complexity: O(1)
+    Steps:
+        1. Loop through the linked list and count the length
+        2. Second loop through and only get to the N-1-k element
+    time: 9:03
+    BCR:O(N)
+    Time Complexity: O(N)
+    Space Complexity: O(1)
 
     """
     if not linkedlist.head:

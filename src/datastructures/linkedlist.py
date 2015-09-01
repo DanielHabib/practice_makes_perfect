@@ -10,7 +10,7 @@ class LinkedList:
      external references to simply point to the head property of the linked
      list
     """
-    def __init__(self, head):
+    def __init__(self, head=None):
         self.head = head
 
 
