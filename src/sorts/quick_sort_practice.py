@@ -355,6 +355,42 @@ def partition9(alist, first, last):
     alist[rightmark] = temp
     return rightmark
 
+def quicksort10(alist):
+    """
+        Writing this to answer some questions,
+        will contain a ton of prints
+    """
+    quicksort_helper10(alist, 0, len(alist)-1)
+
+
+def quicksort_helper10(alist, first, last):
+    """  """
+    if first < last:
+        split_point = partition10(alist, first, last)
+        quicksort_helper10(alist, first, split_point - 1)
+        quicksort_helper10(alist, split_point + 1, last)
+
+def partition10(alist, first, last):
+    done = False
+    pivot_value = alist[first]
+    leftmark = first + 1
+    rightmark = last
+    while not done:
+        while leftmark <= rightmark and alist[leftmark] <= pivot_value:
+            leftmark = leftmark + 1
+        while leftmark <= rightmark and alist[rightmark] >= pivot_value:
+            rightmark = rightmark - 1
+
+        if leftmark > rightmark:
+            done = True
+        else:
+            temp = alist[leftmark]
+            alist[leftmark] = alist[rightmark]
+            alist[rightmark] = temp
+    temp = alist[first]
+    alist[first] = alist[rightmark]
+    alist[rightmark] = temp
+    return rightmark
 
 alist = [1,2,3,45,5,36,45,65,47,45,7645,7,457,54,6,456,45,6,2,34]
 
