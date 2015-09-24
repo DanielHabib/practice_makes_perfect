@@ -12,3 +12,8 @@ I will be practicing a variety of topics :
 
 I am tracking my progress on computer science concepts on a Trello board:
 https://trello.com/b/otwMtLoD/compsci
+
+### Python 
+- [] `Collections.abc`
+- [] `Mixins`
+- [] Python 3 `super()` for diamond inheritance
