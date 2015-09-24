@@ -1,5 +1,5 @@
 class Graph:
-    """  A Graph Datastructure """
+    """ A Graph Datastructure """
     def __init__(self):
         self.nodes = []
 
