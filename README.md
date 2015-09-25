@@ -26,12 +26,23 @@ https://trello.com/b/otwMtLoD/compsci
 - [] License
 - [] Contributing.md
 - [] Dependencies
+- [] NginX setup
+- [] Implement Request Throttling
 - [] Test Coverage
 - [] package.json
-- [] pre-commit hoook
+- [] pre-commit hook
+- [] clean and meaningful commits
+- [] Make use of git milestones 
 - [] Linter
-- [] __all__
+- [] __all__ to specify what is available externally
 - [] sphinx
 - [] doctest
 - [] use __init__.py to its full potential
-- [] strict rules for using docstrings
+- [] strict rules for using docstring
+- [] Comlex Concurrency in python
+- [] Custom Decorators
+- [] Meta Classes
+- [] Abstract Classes
+- [] Specify a Sub-domain
+- [] make use of generators whenever possible
+- [] Create an enviroment that can be spun up on any machine, and is enviroment concious
