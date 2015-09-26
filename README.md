@@ -45,4 +45,6 @@ https://trello.com/b/otwMtLoD/compsci
 - [] Abstract Classes
 - [] Specify a Sub-domain
 - [] make use of generators whenever possible
+- [] __setattr__
+- [] Spell Checker for Doc Blocks
 - [] Create an enviroment that can be spun up on any machine, and is enviroment concious
