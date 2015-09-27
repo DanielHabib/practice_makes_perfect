@@ -20,21 +20,21 @@ I will be practicing a variety of topics :
 - [] Travis
 - [] Makefile
 - [] License
-- [] Contributing.md
+- [] `Contributing.md`
 - [] Dependencies
 - [] NginX setup
 - [] Implement Request Throttling
 - [] Test Coverage
-- [] package.json
+- [] `package.json`
 - [] pre-commit hook
 - [] clean and meaningful commits
 - [] Make use of git milestones
 - [] Linter
 - [] How to match off of memory Address in python
-- [] __all__ to specify what is available externally
-- [] sphinx
-- [] doctest
-- [] use __init__.py to its full potential
+- [] `__all__` to specify what is available externally
+- [] `sphinx`
+- [] `doctest`
+- [] use `__init__.py` to its full potential
 - [] strict rules for using docstring
 - [] Comlex Concurrency in python
 - [] Custom Decorators
@@ -42,6 +42,6 @@ I will be practicing a variety of topics :
 - [] Abstract Classes
 - [] Specify a Sub-domain
 - [] make use of generators whenever possible
-- [] __setattr__
+- [] `__setattr__`
 - [] Spell Checker for Doc Blocks
 - [] Create an enviroment that can be spun up on any machine, and is enviroment concious
