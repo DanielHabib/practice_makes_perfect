@@ -1,4 +1,4 @@
-# Practice_makes_perfect
+# Coding Practice
 My daily coding practice
 
 ### Practice
@@ -10,16 +10,12 @@ I will be practicing a variety of topics :
 * Architecture
 * Coding Problems
 
-I am tracking my progress on computer science concepts on a Trello board:
-https://trello.com/b/otwMtLoD/compsci
 
-### Python 
+### Things to implement
 - [] `Collections.abc` for creating custom container types
 - [] `Mixins` for passing methods around
 - [] `super()` for diamond inheritance and simplifying inheriting from parents
 - [] make use of @property for custom setters and getters
-
-### Things to implement 
 - [] Code Climate
 - [] Travis
 - [] Makefile
@@ -32,8 +28,9 @@ https://trello.com/b/otwMtLoD/compsci
 - [] package.json
 - [] pre-commit hook
 - [] clean and meaningful commits
-- [] Make use of git milestones 
+- [] Make use of git milestones
 - [] Linter
+- [] How to match off of memory Address in python
 - [] __all__ to specify what is available externally
 - [] sphinx
 - [] doctest
