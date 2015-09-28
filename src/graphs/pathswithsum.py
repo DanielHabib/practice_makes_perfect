@@ -21,7 +21,7 @@
     BCR:O(N)
 """
 def paths_with_sum(tree, val):
-    """Time Complexity: O(Nlog(N))"""
+    """Time Complexity: O(Nlog(N))i"""
     paths_with_sum_helper(node, [], 0, val)
 
 def paths_with_sum_helper(node, sums_array, counter, check_val):
