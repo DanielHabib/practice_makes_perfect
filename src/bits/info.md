@@ -16,5 +16,7 @@
  * Normalize the mantissa
  * convert the exponent
  * place in order of 1-bit=> sign; 3-bits=>exponent;4bits=>represent `mantissa`
+* Finding the value of a float can be done by multipling the value by 2 checking if it is greater than or equal to 1, if it is then we put a append a 1 to the binary value and subtract 1 from the number, otherwise we append a 0. We repeat until the value is 0 or exceeds our limit
+
 ## Mistakes
 * Not sure how to get the length of a binary number in python.
