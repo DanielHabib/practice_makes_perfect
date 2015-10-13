@@ -1,5 +1,6 @@
 """ Contains the different Nodes for all datastructures """
 
+
 class Node:
     """ Base Node """
     def __init__(self, data):
@@ -9,7 +10,7 @@ class Node:
 class TreeNode(Node):
     """ Tree Node """
     def __init__(self, data):
-        super().__init__(data) = data
+        super().__init__(data)
 
 class BinaryTreeNode(TreeNode):
     """ Binary Tree Node  """
@@ -28,7 +29,7 @@ class BinarySearchTreeNode(TreeNode):
 
 class AVLNode(BinarySearchTreeNode):
     """ AVL Tree Node """
-    def __init__(self, data, left=None, right=None, height=0):)
+    def __init__(self, data, left=None, right=None, height=0):
         super().__init__(data, left, right)
         self.height = height
 
