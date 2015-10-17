@@ -85,14 +85,16 @@ class AVLTree:
                 self._double_right_rotation(current_node)
             else:
                 self._single_right_rotation(current_node)
-            self._recalculate_height(current_node.parent)
+            self._recalculate_height(current_node.parent.left)
+            self._recalculate_height(current_node.parent.right)
         elif current_node.balance_factor < 1:
             """ Right Heavy """
             if current_node.right.balance_factor > 0:
                 self._double_left_rotation(current_node)
             else:
                 self._single_left_rotation(current_node)
-            self._recalculate_height(current_node.parent)
+            self._recalculate_height(current_node.parent.left)
+            self._recalculate_height(current_node.parent.right)
 
     def _single_right_rotation(self, current_node):
         """ Handles a right rotation """
@@ -149,38 +151,20 @@ class AVLTree:
         """ calculate the height of the current_node's subtree """
         if current_node:
             max_height = 0
+            left = 0
+            right = 0
+            if current_node.left:
+                left = current_node.left.height
+            if current_node.right:
+                right = current_node.right.height
             left = getattr(current_node, 'left', AVLNode(1, height=0))
-            right = getattr(current_node, 'right', AVLNode(1,height=0))
-            max_height = max(left.height, right.height)
+            right = getattr(current_node, 'right', AVLNode(1, height=0))
+            print(left)
+            print(right)
+            max_height = max(left.height, right.height) + 1
             if self.height != max_height:
-                current_node.height = max_height + 1
+                current_node.height = max_height
                 self._recalculate_height(current_node.parent)
-
-
-
-    def __repr__(self):
-        return self.nodes;
-
-    def __str__(self, depth=0):
-        return " ".join(self.print_structure())
-
-    def print_structure(self):
-        return self.in_order(verbose=False)
-
-        # ret = ""
-
-        # # Print right branch
-        # if self.right != None:
-        #     ret += self.right.__str__(depth + 1)
-
-        # # Print own value
-        # ret += "\n" + ("    "*depth) + str(self.value)
-
-        # # Print left branch
-        # if self.left != None:
-        #     ret += self.left.__str__(depth + 1)
-
-        # return ret
 
     # Traversals
 
@@ -248,10 +232,6 @@ class AVLTree:
             alist.append(node)
 
 
-
-
-
-
 class TestAVLTree(TestCase):
     """ Test the avl tree to ensure proper behavior """
 
@@ -313,6 +293,7 @@ class TestAVLTree(TestCase):
         tree = AVLTree()
         injection_list = [1,2,3]
         tree.inject(injection_list)
+        print([x.height for x in tree.in_order()])
         self.assertEquals(tree.root.data, 2)
         self.assertEquals(tree.root.height, 2)
 
