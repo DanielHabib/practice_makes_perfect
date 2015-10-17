@@ -85,16 +85,16 @@ class AVLTree:
                 self._double_right_rotation(current_node)
             else:
                 self._single_right_rotation(current_node)
-            self._recalculate_height(current_node.parent.left)
-            self._recalculate_height(current_node.parent.right)
+            # self._recalculate_height(current_node.parent.left)
+            # self._recalculate_height(current_node.parent.right)
         elif current_node.balance_factor < 1:
             """ Right Heavy """
             if current_node.right.balance_factor > 0:
                 self._double_left_rotation(current_node)
             else:
                 self._single_left_rotation(current_node)
-            self._recalculate_height(current_node.parent.left)
-            self._recalculate_height(current_node.parent.right)
+            # self._recalculate_height(current_node.parent.left)
+            # self._recalculate_height(current_node.parent.right)
 
     def _single_right_rotation(self, current_node):
         """ Handles a right rotation """
@@ -157,17 +157,12 @@ class AVLTree:
                 left = current_node.left.height
             if current_node.right:
                 right = current_node.right.height
-            left = getattr(current_node, 'left', AVLNode(1, height=0))
-            right = getattr(current_node, 'right', AVLNode(1, height=0))
-            print(left)
-            print(right)
-            max_height = max(left.height, right.height) + 1
+            max_height = max(left, right) + 1
             if self.height != max_height:
                 current_node.height = max_height
                 self._recalculate_height(current_node.parent)
 
     # Traversals
-
     def in_order(self, verbose=False):
         """ In Order Traversal
             Returns a list of nodes in order traversal
@@ -186,7 +181,7 @@ class AVLTree:
             self.in_order_helper(node.left, alist)
             if verbose:
                 print(node.data)
-            alist.append(str(node.data))
+            alist.append(node)
             self.in_order_helper(node.right, alist)
 
     def pre_order(self, verbose=False):
@@ -293,25 +288,20 @@ class TestAVLTree(TestCase):
         tree = AVLTree()
         injection_list = [1,2,3]
         tree.inject(injection_list)
-        print([x.height for x in tree.in_order()])
         self.assertEquals(tree.root.data, 2)
         self.assertEquals(tree.root.height, 2)
 
-    # def test_height_successful_on_list_addition(self):
-    #     """ Ensure Height Is Updated Correctly with a list of options
-    #         Will need to be updated after rebalance is implemented
-    #     """
-    #     injection_list = [3,4,2,51,5,43,1,3214,6]
-    #     tree = AVLTree()
-    #     tree.inject(injection_list)
-    #     print(tree)
-    #     [print(x.data) for x in tree.nodes]
-    #     print("\t\t{root}".format(root=tree.root.data))
-    #     print("\t{node1}\t\t{node2}".format(node1=tree.root.left.data, node2=tree.root.right.data))
-    #     print("{node}".format(node=tree.root.left.left.data))
-    #     print("\t\t\t{node}".format(node=tree.root.right.left.data))
-    #     print("{node}".format(node=tree.root.left.left.left.data))
+    def test_height_successful_on_list_addition(self):
+        """ Ensure Height Is Updated Correctly with a list of options
+            Will need to be updated after rebalance is implemented
+        """
+        injection_list = [3,4,2,51,5,43,1,3214,6]
+        tree = AVLTree()
+        tree.inject(injection_list)
+        print(tree)
+        print([x.height for x in tree.in_order()])
+        print("\t\t{root}".format(root=tree.root.data))
 
-    #     self.assertEquals(tree.root.height, 4)
-    #     self.assertEquals(tree.root.data, 5)
+        self.assertEquals(tree.root.height, 4)
+        self.assertEquals(tree.root.data, 5)
 
