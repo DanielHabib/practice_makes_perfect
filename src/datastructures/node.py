@@ -48,10 +48,10 @@ class AVLNode(BinarySearchTreeNode):
         return left - right
 
     def isLeftChild(self):
-        return self.parent.left == self
+        return self.parent.left is self
 
     def isRightChild(self):
-        return self.parent.right == self
+        return self.parent.right is self
 
 
 

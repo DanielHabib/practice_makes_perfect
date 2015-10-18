@@ -85,16 +85,16 @@ class AVLTree:
                 self._double_right_rotation(current_node)
             else:
                 self._single_right_rotation(current_node)
-            # self._recalculate_height(current_node.parent.left)
-            # self._recalculate_height(current_node.parent.right)
+            self._recalculate_height(current_node.parent.left)
+            self._recalculate_height(current_node.parent.right)
         elif current_node.balance_factor < 1:
             """ Right Heavy """
             if current_node.right.balance_factor > 0:
                 self._double_left_rotation(current_node)
             else:
                 self._single_left_rotation(current_node)
-            # self._recalculate_height(current_node.parent.left)
-            # self._recalculate_height(current_node.parent.right)
+            self._recalculate_height(current_node.parent.left)
+            self._recalculate_height(current_node.parent.right)
 
     def _single_right_rotation(self, current_node):
         """ Handles a right rotation """
@@ -109,12 +109,12 @@ class AVLTree:
         new_root.right = current_node
         current_node.parent = new_root
 
-        if parent:
+        if new_root.parent:
             """ The node is the root of the AVL tree! """
-            if current_node.isLeftChild():
-                parent.left = new_root
+            if new_root.parent.data > new_root.data:
+                new_root.parent.left = new_root
             else:
-                parent.right = new_root
+                new_root.parent.right = new_root
         else:
             self.root = new_root
 
@@ -130,12 +130,12 @@ class AVLTree:
         new_root.left = current_node
         current_node.parent = new_root
 
-        if parent:
+        if new_root.parent:
             """ The node is the root of the AVL tree! """
-            if current_node.isLeftChild():
-                parent.left = new_root
-            if current_node.isRightChild():
-                parent.right = new_root
+            if new_root.parent.data > new_root.data:
+                new_root.parent.left = new_root
+            else:
+                new_root.parent.right = new_root
         else:
             self.root = new_root
 
@@ -284,12 +284,67 @@ class TestAVLTree(TestCase):
         tree.inject(3)
         self.assertEquals(tree.root.height, 2)
 
-    def test_simple_rotation(self):
+    def test_simple_left_rotation(self):
+        """ Left Rotation """
         tree = AVLTree()
         injection_list = [1,2,3]
         tree.inject(injection_list)
         self.assertEquals(tree.root.data, 2)
         self.assertEquals(tree.root.height, 2)
+        self.assertEquals(tree.root.left.data, 1)
+        self.assertEquals(tree.root.left.height, 1)
+        self.assertEquals(tree.root.right.data, 3)
+        self.assertEquals(tree.root.right.height, 1)
+
+    def test_extensive_left_rotation(self):
+        """Extensive Left Rotation"""
+        tree = AVLTree()
+        injection_list = [1,2,3,4,5]
+        tree.inject(injection_list)
+        self.assertEquals(tree.root.data, 2)
+        self.assertEquals(tree.root.height, 3)
+        self.assertEquals(tree.root.right.data, 4)
+        self.assertEquals(tree.root.right.height, 2)
+        self.assertEquals(tree.root.right.right.data, 5)
+        self.assertEquals(tree.root.right.right.height, 1)
+        self.assertEquals(tree.root.right.left.data, 3)
+        self.assertEquals(tree.root.right.left.height, 1)
+
+    def test_simple_right_rotation(self):
+        """ Right Rotation """
+        tree = AVLTree()
+        injection_list = [3, 2, 1]
+        tree.inject(injection_list)
+        self.assertEquals(tree.root.data, 2)
+        self.assertEquals(tree.root.height, 2)
+        self.assertEquals(tree.root.left.data, 1)
+        self.assertEquals(tree.root.left.height, 1)
+        self.assertEquals(tree.root.right.data, 3)
+        self.assertEquals(tree.root.right.height, 1)
+
+    def test_double_left_rotation(self):
+        """ Double Left Rotation """
+        tree = AVLTree()
+        injection_list = [3,5,4]
+        tree.inject(injection_list)
+        self.assertEquals(tree.root.data, 4)
+        self.assertEquals(tree.root.height, 2)
+        self.assertEquals(tree.root.left.data, 3)
+        self.assertEquals(tree.root.left.height, 1)
+        self.assertEquals(tree.root.right.data, 5)
+        self.assertEquals(tree.root.right.height, 1)
+
+    def test_double_right_rotation(self):
+        """ Double Right Rotation """
+        tree = AVLTree()
+        injection_list = [5,3,4]
+        tree.inject(injection_list)
+        self.assertEquals(tree.root.data, 4)
+        self.assertEquals(tree.root.height, 2)
+        self.assertEquals(tree.root.left.data, 3)
+        self.assertEquals(tree.root.left.height, 1)
+        self.assertEquals(tree.root.right.data, 5)
+        self.assertEquals(tree.root.right.height, 1)
 
     def test_height_successful_on_list_addition(self):
         """ Ensure Height Is Updated Correctly with a list of options
@@ -298,9 +353,6 @@ class TestAVLTree(TestCase):
         injection_list = [3,4,2,51,5,43,1,3214,6]
         tree = AVLTree()
         tree.inject(injection_list)
-        print(tree)
-        print([x.height for x in tree.in_order()])
-        print("\t\t{root}".format(root=tree.root.data))
 
         self.assertEquals(tree.root.height, 4)
         self.assertEquals(tree.root.data, 5)
