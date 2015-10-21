@@ -1,0 +1,41 @@
+class Solution(object):
+    def isStrobogrammatic(self, num):
+        """ Strobogrammatic Number is one that looks the same when flipped 180 degrees
+        :type num: str
+        :rtype: bool
+        
+        NOTES: When Flipped =
+                1=1
+                6=9
+                9=6
+                8=8
+                2,3,4,5,7 != Anything Flipped
+                
+        BCR: O(N)
+        
+        Conditions: if 2,3,4,5,7 are found, return False
+        
+        Steps:
+            Find Pivot, search each side of the string starting in the middle, moving outward and comparing to find the correct value with the other , if there is a discrepency, return False, otherwise return True
+            
+        """
+        strob_map = {"1": "1", "6":"9", "9":"6", "8":"8", "0":"0"}
+        length = len(num)
+        mid = length // 2
+        mid_val = num[mid]
+        if length % 2:
+            """ is odd """
+            
+            if mid_val != "1" and mid_val != "8":
+                return False
+        i = 0
+        while i < mid:
+            front = num[i]
+            back_expect = strob_map.get(front, False)
+            if not back_except:
+                return False
+            back = num[len(num)-i-1]
+            if back_expect != back:
+                return False
+        return True               
+
