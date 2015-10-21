@@ -12,6 +12,15 @@ class TreeNode(Node):
     def __init__(self, data):
         super().__init__(data)
 
+class TrieNode(Node):
+    """A Trie Node"""
+    def __init__(self, data, children=None):
+        super().__init__(data)
+        if not children:
+            self.children = {}
+        else:
+            self.children = None
+
 class BinaryTreeNode(TreeNode):
     """ Binary Tree Node  """
     def __init__(self, data, left=None, right=None):
@@ -52,22 +61,5 @@ class AVLNode(BinarySearchTreeNode):
 
     def isRightChild(self):
         return self.parent.right is self
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
