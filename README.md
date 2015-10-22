@@ -9,3 +9,5 @@ I will be practicing a variety of topics :
 * Computer Science Fundamentals
 * Architecture
 * Coding Problems
+
+`LTE = LAMENS TERMS EXPLANATION`
