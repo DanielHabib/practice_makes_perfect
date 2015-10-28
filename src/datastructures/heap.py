@@ -76,9 +76,3 @@ class MaxHeapTest(TestCase):
         self.assertEquals(5, heap.get_max())
         self.assertEquals(3, heap.get_max())
         self.assertEquals(1, heap.get_max())
-
-
-
-
-
-
