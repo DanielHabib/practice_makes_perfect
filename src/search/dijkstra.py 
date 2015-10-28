@@ -1,0 +1,11 @@
+"""Dijkstra"""
+from datastructures.minheap import MinHeap
+from datastructures.vertex import Vertex
+from datastructures.graph import Graph
+
+
+def dijkstra(agraph, start):
+    pq = MinHeap()
+    start.setDistance(0)
+
+    pq.build_heap(([v.dist, v) agraph])

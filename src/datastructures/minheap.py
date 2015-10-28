@@ -6,6 +6,10 @@ class MinHeap:
     def __init__(self):
         self.heap = []
 
+    def build_heap(self, alist):
+        for val in alist:
+            self.add(val)
+
     def add(self, val):
         self.heap.append(val)
         self._rebalance_addition(len(self.heap) - 1)
@@ -60,6 +64,14 @@ class MinHeapTest(TestCase):
         for num in input_array:
             heap.add(num)
         self.assertEquals(heap.heap, input_array)
+
+    def test_build_heap(self):
+        input_array = [7,6,5,3,1]
+        expect_array = [1,3,6,7,5]
+        heap = MinHeap()
+        heap.build_heap(input_array)
+        self.assertEquals(heap.heap, expect_array)
+
 
     def test_create_heap_with_rebalance(self):
         input_array = [7,6,5,3,1]

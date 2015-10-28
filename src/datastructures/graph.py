@@ -32,5 +32,3 @@ class Graph:
     def __iter__(self):
         return iter(self.vertList.values())
 
-
-

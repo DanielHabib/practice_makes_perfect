@@ -2,8 +2,12 @@
 from unittest import TestCase
 
 class Vertex:
-    def __init__(self,key):
+    def __init__(self, key, dist=None):
         self.key = key
+        if not dist
+            self.dist = 0
+        else:
+            self.dist = dist
         self.connectedTo = {}
 
     def addNeighbor(self, nbr, weight=0):
