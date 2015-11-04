@@ -1,38 +1,69 @@
+
 """Priority Queue"""
 from datastructures.minheap import MinHeap
+from math import floor
+
+
+class PQNode:
+    def __init__(self, priority, value):
+        self.priority = priority
+        self.val = value
+
+
 class PriorityQueue(MinHeap):
+
     def __init__(self):
         super().__init__()
 
-    def add(self, val):
-        self.heap.append(val)
-        self._rebalance_addition(len(self.heap) - 1)
+    def add(self, priority, val):
+        node = PQNode(priority, val)
 
-    def pop_min(self):
-        new_min = self.heap.pop()
-        minimum = self.heap[0]
-        self.heap[0] = new_min
-        self._rebalance_pop(0)
-        return minimum
+        self.heap.append(node)
+        self.rebalance_addition(len(self.heap) - 1)
 
-    def _rebalance_addition(self, n):
-        if n != 0:
-            parent = self._get_parent(n)
-            if self.heap[parent] > self.heap[n]:
+    def rebalance_addition(self, n):
+        parent = self._parent(n)
+        if parent:
+            if self.heap[parent].priority < self.heap[n].priority:
                 self.heap[parent], self.heap[n] = self.heap[n], self.heap[parent]
-                self._rebalance_addition(parent)
+                self.rebalance_addition(parent)
 
-    def _rebalance_pop(self, n):
-        left = self._get_left(n)
-        right = self._get_right(n)
+    def pop(self, priority, val):
+        if self.heap:
+            min_ = self.heap[0].value
+            final = self.heap.pop()
+            self.heap[0] = final
+            self.rebalance_deletion(self, 0)
+            return min_
+
+    def rebalance_deletion(self, n):
+        left = self._left(n)
+        right = self._right(n)
         if left and right:
-            if self.heap[left] < self.heap[n] and self.heap[left] < self.heap[right]:
+            if self.heap[left].priority < self.heap[n].priority and \
+                        self.heap[left].priority < self.heap[right].priority:
+                """Swap Left"""
                 self.heap[left], self.heap[n] = self.heap[n], self.heap[left]
-                self._rebalance_pop(left)
-            elif self.heap[right] < self.heap[n] and self.heap[right] < self.heap[left]:
+                self.rebalance_deletion(left)
+            if self.heap[right].priority < self.heap[n].priority and \
+                    self.heap[right].priority < self.heap[left].priority:
                 self.heap[right], self.heap[n] = self.heap[n], self.heap[right]
-                self._rebalance_pop(right)
-        elif left:
-            if self.heap[left] < self.heap[n]:
+                self.rebalance_deletion(right)
+        if left:
+            if self.heap[left].priority < self.heap[n].priority:
                 self.heap[left], self.heap[n] = self.heap[n], self.heap[left]
 
+
+    def _parent(n):
+        if n > 0:
+            return floor((n - 1) / 2)
+
+    def _left(n):
+        left = (n * 2) + 1
+        if left < len(self.heap):
+            return left
+
+    def _right(n):
+        right = (n * 2) + 2
+        if right < len(self.heap):
+            return right
