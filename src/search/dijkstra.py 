@@ -1,4 +1,7 @@
-"""Dijkstra"""
+"""Dijkstra
+    
+    Pretty Much just Breadth First Search with a priority Queue
+"""
 from datastructures.minheap import MinHeap
 from datastructures.vertex import Vertex
 from datastructures.graph import Graph

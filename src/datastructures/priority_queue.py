@@ -8,12 +8,15 @@ class PQNode:
     def __init__(self, priority, value):
         self.priority = priority
         self.val = value
-
+        self.current_dist=0
 
 class PriorityQueue(MinHeap):
 
     def __init__(self):
         super().__init__()
+
+    def isEmpty(self):
+        return not len(self.heap)
 
     def add(self, priority, val):
         node = PQNode(priority, val)
