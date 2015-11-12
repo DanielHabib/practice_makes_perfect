@@ -7,10 +7,11 @@ from datastructures.vertex import Vertex
 from datastructures.graph import Graph
 
 
-def dijkstra(start, goal):
+def dijkstra(agraph, goal):
     pq = PriorityQueue()
     start.setDistance(0)
-    pq.add(start)
+    for val in agraph:
+        pq.add(val)
     dist = 0
     while not pq.isEmpty():
         currentVert = pq.pop()
