@@ -35,6 +35,11 @@ class FooTest(TestCase):
 
             Just tested it out, __slots__ must point to the private _children
             which makes sense, would have freaked me out a little if it didnt
+
+            Can an array given a certain allocation of memory from __slots__
+            grow infiinitely? I believe so because I think it just prevents
+            the creation of other properties, not limit the amount allocated
+            to this specific property
          """
         foo = Foo()
         arr = [1, 2, 3, 4]
