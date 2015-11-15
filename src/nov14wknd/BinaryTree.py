@@ -204,7 +204,6 @@ class BinarySearchTree(BinaryTree):
                 replacement.left = node.left
                 replacement.right = node.right
 
-
     def _find_smallest_of_subtree(self, current):
         if current.left:
             return self._smallest_node(current.left)
