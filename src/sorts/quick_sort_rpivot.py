@@ -43,7 +43,31 @@ def _partition(alist, first, last):
     swap(alist, first, last)
     return first
 
+
+
+
+def qsort2(alist):
+    qsort2_helper(alist, 0, len(alist)-1)
+
+def qsort2_helper(alist, first, last):
+    if first < last:
+        split_point = partition_2(alist, first, last)
+        qsort2_helper(alist, first, split_point - 1)
+        qsort2_helper(alist, split_point + 1, last)
+
+def partition_2(alist, first, last):
+    pivot = first + random.randrange(last - first + 1)
+    swap_2(alist, pivot, last)
+    for i in range(first, last):
+        if alist[i] <= alist[last]:
+            swap(alist, i, first)
+            first += 1
+    swap(alist, first, last)
+    return first
+
+def swap_2(array, a, b):
+    array[a], array[b] = array[b], array[a]
 if __name__ == '__main__':
     alist = [3,2,4,15,6,7,2,3,5,7,2,3,2,6]
-    qsort(alist)
+    qsort2(alist)
     print(alist)
