@@ -138,24 +138,10 @@ def partition_5(alist, first, last):
     swap(alist, first, last)
     return first
 
-
 def swap_5(alist, a, b):
     alist[a], alist[b] = alist[b], alist[a]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     alist = [3,2,4,15,6,7,2,3,5,7,2,3,2,6]
-    qsort4(alist)
+    qsort5(alist)
     print(alist)
