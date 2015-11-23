@@ -118,6 +118,31 @@ def partition_4(alist, first, last):
 def swap_4(alist, a, b):
     alist[a], alist[b] = alist[b], alist[a]
 
+def qsort5(alist):
+    qsort5_helper(alist, 0, len(alist) - 1)
+
+def qsort5_helper(alist, first, last):
+    if last > first:
+        split_point = partition_5(alist, first, last)
+        qsort5_helper(alist, first, split_point - 1)
+        qsort5_helper(alist, split_point +  1, last)
+
+def partition_5(alist, first, last):
+    # Pick a pivot
+    pivot = first + random.randrange(last - first + 1)
+    swap(alist, pivot, last)
+    for i in range(first, last):
+        if alist[i] <= alist[last]: # which is now the pivot
+            swap(alist, first, i)
+            first += 1
+    swap(alist, first, last)
+    return first
+
+
+def swap_5(alist, a, b):
+    alist[a], alist[b] = alist[b], alist[a]
+
+
 
 
 
