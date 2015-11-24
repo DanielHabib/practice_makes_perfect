@@ -141,7 +141,53 @@ def partition_5(alist, first, last):
 def swap_5(alist, a, b):
     alist[a], alist[b] = alist[b], alist[a]
 
+
+
+
+
+
+
+
+
+
+def qsort6(alist):
+    qsort_helper_6(alist, 0, len(alist) - 1)
+
+def qsort_helper_6(alist, first, last):
+    if last > first:
+        split_point = partition_6(alist, first, last)
+        qsort_helper_6(alist, first, split_point - 1)
+        qsort_helper_6(alist, split_point + 1, last)
+
+def partition_6(alist, first, last):
+    pivot = first + random.randrange(last - first + 1)
+    swap_6(alist, pivot, last)
+    for i in range(first, last):
+        if alist[i] <= alist[last]:
+            swap(alist, i, first)
+            first += 1
+    swap_6(alist, first, last)    
+    return first
+
+def swap_6(alist, a, b):
+    alist[a], alist[b] = alist[b], alist[a]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     alist = [3,2,4,15,6,7,2,3,5,7,2,3,2,6]
-    qsort5(alist)
+    qsort6(alist)
     print(alist)
