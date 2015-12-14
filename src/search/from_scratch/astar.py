@@ -95,7 +95,7 @@ class Vertex:
         self.neighbors[value] = weight
 
 def heuristic(a, b):
-    return sqrt(a ** 2 + b ** 2)
+    return a.dist - b.dist
 
 def astar(graph, first, last):
     queue = PriorityQueue()
@@ -112,9 +112,3 @@ def astar(graph, first, last):
                 neighbor.dist = distance
                 priority = heuristic(neighbor, last)
                 queue.add(neighbor, priority)
-
-
-
-
-
-

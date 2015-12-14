@@ -175,13 +175,46 @@ def swap_6(alist, a, b):
 
 
 
+def qs7(alist):
+    qs7_helper(alist, 0, len(alist) - 1)
 
 
+def qs7_helper(alist, first, last):
+    if last > first:
+        sp = partition7(alist, first, last)
+        qs7_helper(alist, first, sp - 1)
+        qs7_helper(alist, sp + 1, last)
+
+def partition7(alist, first, last):
+    pivot = random.randrange(last - first + 1)
+    swap_6(alist, pivot, last)
+    for i in range(first, last):
+        if alist[i] <= alist[last]:
+            swap_6(alist, first, i)
+            first += 1
+    swap_6(alist, first, last)
+    return first
 
 
+def partition8(alist, first, last):
+    pivot = random.randrange(last - first + 1)
+    swap(alist, last, pivot)
+    for i in range(first, last):
+        if alist[i] <= alist[last]:
+            swap(alist, first, i)
+            first += 1
+    swap(alist, first, last)
+    return first
 
-
-
+def partition9(alist, first, last):
+    pivot = random.randrange(last - first + 1)
+    swap(alist, pivot, last)
+    for i in range(first, last):
+        if alist[i] <= alist[last]:
+            swap(alist, first, i)
+            first += 1
+    swap(alist, first, last)
+    return first
 
 
 
