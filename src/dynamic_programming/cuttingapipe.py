@@ -13,7 +13,7 @@ class PipeOptimization:
         self.p_index = p_index
         self.store = {}
 
-    def max_profit(self, n, price_so_far):
+    def max_profit(self, n):
         """
 
         Args:
@@ -32,32 +32,22 @@ class PipeOptimization:
             length of the pipe each time if we want a shot.
 
         """
-        # Base Cases
+        # Base Case
         if n <= 0:
-            return price_so_far
+            return 0
 
-        max_value = 0
-        if n in self.p_index.keys():
-            max_value = self.p_index[n]
+        # Memoize
+        if n in self.store.keys():
+            return self.store[n]
+        q = 0
+        for i in range(1, n + 1):
+            current_cut_value = 0
+            if i in self.p_index.keys():
+                current_cut_value = self.p_index[i]
 
-        # if self.store.get(n, False):
-        #     return self.store[n]
-
-        for length in range(n):
-            length += 1
-
-            updated_price = price_so_far + self.p_index.get(length, 0)
-
-            max_value = max(
-                    self.max_profit(n - length, updated_price),
-                    max_value)
-        # Recall loop
-
-        print(max_value)
-
-        self.store[n] = max_value
-
-        return max_value
+            q = max(q, current_cut_value + self.max_profit(n - i))
+        self.store[n] = q
+        return q
 
 
 class PipeOptimizationTest(TestCase):
@@ -71,13 +61,24 @@ class PipeOptimizationTest(TestCase):
     def test_max_profit(self):
 
         pipe = PipeOptimization(self.p_dict)
-        result = pipe.max_profit(4, 0)
+        result = pipe.max_profit(4)
         print(pipe.store)
         self.assertEquals(result, 6)
 
     def test_max_profit_base_case(self):
 
         pipe = PipeOptimization(self.p_dict)
-        result = pipe.max_profit(1, 0)
+        result = pipe.max_profit(1)
 
         self.assertEquals(result, 1)
+
+    def test_store_is_fully_constructed(self):
+
+        pipe = PipeOptimization(self.p_dict)
+        n = 4
+        pipe.max_profit(n)
+        for i in range(1, n + 1):
+            self.assertTrue(i in pipe.store.keys())
+
+
+
