@@ -27,6 +27,7 @@ class GreedyPipeCutting:
             price_dict[key] = val / key
         self.price_dict = price_dict
         self.cuts = []
+        self.max_recorder = {}
 
     def cut_pipe(self, n):
         """Greedy Algo
@@ -43,11 +44,16 @@ class GreedyPipeCutting:
             return 0
         best_cut = 0
         q = 0
-        for i in range(n):
-            i += 1
-            if self.price_dict.get(i, 0) > best_cut:
-                q = i
-                best_cut = self.price_dict[i]
+        if not self.max_recorder.get(n, False):
+            for i in range(n):
+                i += 1
+                if self.price_dict.get(i, 0) > best_cut:
+                    q = i
+                    best_cut = self.price_dict[i]
+
+                self.max_recorder[i] = q
+        else:
+            q = self.max_recorder[n]
         # apply cut
         self.cuts.append(q)
         return (self.price_dict[q] * q) + self.cut_pipe(n - q)
@@ -55,8 +61,8 @@ class GreedyPipeCutting:
 
 class TestGreedyPipeCutting(TestCase):
 
-    def test_cute_pipe(self):
-        price_dict = {
+    def setUp(self):
+        self.price_dict = {
             1: 1,
             2: 1.8,
             3: 2.1,
@@ -66,7 +72,9 @@ class TestGreedyPipeCutting(TestCase):
             7: 11.5,
             8: 12,
         }
-        cutter = GreedyPipeCutting(price_dict)
+
+    def test_cute_pipe(self):
+        cutter = GreedyPipeCutting(self.price_dict)
 
         val = cutter.cut_pipe(8)
         # proves the right value cannot be attained always through greedy in this situation
@@ -75,3 +83,6 @@ class TestGreedyPipeCutting(TestCase):
         self.assertEquals(val, 13)
 
         self.assertEquals(cutter.cuts, [5, 1, 1, 1])
+
+        self.assertEquals(cutter.max_recorder,
+                          {1: 1, 2: 1, 3: 1, 4: 4, 5: 5, 6: 5, 7: 5, 8: 5})
