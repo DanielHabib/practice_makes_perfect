@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from unittest import TestCase
 """
 Show, by means of a counterexample, that the following “greedy” strategy does
@@ -25,6 +26,7 @@ class GreedyPipeCutting:
         for key, val in price_dict.items():
             price_dict[key] = val / key
         self.price_dict = price_dict
+        self.cuts = []
 
     def cut_pipe(self, n):
         """Greedy Algo
@@ -37,13 +39,18 @@ class GreedyPipeCutting:
         """
 
         # Find the Greediest cut
+        if n <= 0:
+            return 0
         best_cut = 0
+        q = 0
         for i in range(n):
             i += 1
-            best_cut = max(best_cut, self.price_dict.get(i, 0))
-
+            if self.price_dict.get(i, 0) > best_cut:
+                q = i
+                best_cut = self.price_dict[i]
         # apply cut
-        return self.price_dict[best_cut] + self.cut_pipe(n - best_cut)
+        self.cuts.append(q)
+        return (self.price_dict[q] * q) + self.cut_pipe(n - q)
 
 
 class TestGreedyPipeCutting(TestCase):
@@ -51,8 +58,8 @@ class TestGreedyPipeCutting(TestCase):
     def test_cute_pipe(self):
         price_dict = {
             1: 1,
-            2: 2,
-            3: 3,
+            2: 1.8,
+            3: 2.1,
             4: 7.6,
             5: 10,
             6: 11,
@@ -64,3 +71,7 @@ class TestGreedyPipeCutting(TestCase):
         val = cutter.cut_pipe(8)
         # proves the right value cannot be attained always through greedy in this situation
         self.assertNotEquals(val, 15.2)
+        # proves it is getting the wrong value via the greedy algorithm
+        self.assertEquals(val, 13)
+
+        self.assertEquals(cutter.cuts, [5, 1, 1, 1])
