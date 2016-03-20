@@ -23,29 +23,54 @@ class CutPipe:
         self.price_dict = price_dict
         self.cost = cost
         self.memo = {}
+        self.cuts = []
 
     def cut_pipe(self, n):
+        val, cuts = self.cut_pipe_help(n)
+        self.cuts = cuts
+        return val
 
+    def cut_pipe_help(self, n):
         # base case
-        if n <= 0:
-            return 0
 
+        if n <= 0:
+            return 0, []
+
+        # intialize variables
         q = -10000
+        big_i = 0
+        big_cuts = []
 
         # check for sub problem
         if self.memo.get(n, False):
+
             return self.memo[n]
+
+        # Create Logic for Calling Sub problem
         for i in range(n):
             i += 1
             # Be sure to account for not cutting. if i == n
             cost = self.cost
             if i == n:
                 cost = 0
-            q = max(q, self.cut_pipe(n - i) + self.price_dict[i] - cost)
+            # Call Sub problem
 
+            val, cuts = self.cut_pipe_help(n - i)
+
+            val += self.price_dict[i] - cost
+            if val > q:
+                q = val
+                big_i = i
+                big_cuts = cuts
+        # Store The Current Cut
+
+        # self.cuts.append(big_i)
+        big_cuts.append(big_i)
         # store sub problem
-        self.memo[n] = q
-        return q
+        self.memo[n] = (q, big_cuts)
+
+        # Return Solution
+        return q, big_cuts
 
 
 class TestCutPipe(TestCase):
@@ -87,10 +112,20 @@ class TestCutPipe(TestCase):
         cost = 8
         cutter = CutPipe(self.price_dict, cost)
         val = cutter.cut_pipe(8)
+        sum_value = 0
+        for cut in cutter.cuts:
+            sum_value += self.price_dict[cut]
         self.assertEquals(val, self.price_dict[8])
+        self.assertEquals([8], cutter.cuts)
+        self.assertEquals(val, sum_value - (len(cutter.cuts) - 1) * cost)
 
 
-
-
-
-
+    def test_cuts_are_stored_correctly(self):
+        cost = 1
+        cutter = CutPipe(self.price_dict, cost)
+        val = cutter.cut_pipe(8)
+        sum_value = 0
+        for cut in cutter.cuts:
+            sum_value += self.price_dict[cut]
+        self.assertEquals([4, 4], cutter.cuts)
+        self.assertEquals(val, sum_value - (len(cutter.cuts) - 1) * cost)
