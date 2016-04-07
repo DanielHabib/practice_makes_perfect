@@ -76,6 +76,22 @@ def crossover_helper(arr, i, mid, j):
     return left_index, right_index, (max_left + max_right)
 
 
+def linear_time(arr):
+    """
+    Assumes at least one positive val
+    """
+    working_sum = 0
+    max_sum = 0
+
+    for val in arr:
+        working_sum += val
+        if working_sum < 0:
+            working_sum = 0
+        max_sum = max(max_sum, working_sum)
+
+    return max_sum
+
+
 
 
 
@@ -123,3 +139,17 @@ class MaxSubArrayTest(TestCase):
         self.assertEquals(result[2], 12)
 
 
+    def test_linear_works(self):
+        arr = [1, -20, 3, 4, 5]
+        expected_result = 12
+        result = linear_time(arr)
+        self.assertEquals(result, expected_result)
+
+
+    def test_linear_time_works_with_whole_array(self):
+        arr = [1, 20, 3, 4, 5]
+        expected_result = 33
+
+        result = linear_time(arr)
+
+        self.assertEquals(result, expected_result)
