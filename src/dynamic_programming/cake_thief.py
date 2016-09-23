@@ -12,7 +12,7 @@ def cake_thief(max_capacity, cakes):
 
     return arr[-1]
 
-# if __name__ == '__main__':
+# if __name__ == '__main__':w
     # print 'cake thief iter: {0}'.format(cake_thief(10, [(2,5), (1,2), (4,10), (5,6),(3,15)]))
 
 
