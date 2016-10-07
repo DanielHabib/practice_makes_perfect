@@ -1,0 +1,5 @@
+When the cost function takes Theta0 and Theta1 we get a Three Dimensional Graph.  We will use countour plots to represent the proper value
+
+What I dot get is how to generate a countour function
+
+How to automatically and efficiently calculate the best values of theta 0 and theta 1 that minimizes the cost function j
