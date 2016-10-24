@@ -4,9 +4,10 @@
 Search an array of distinct integers to see if asubi = i
 '''
 
-
+@profile
 def bsearch(arr):
-    floor, ceil = 0, len(arr) - 1
+    floor = 0
+    ceil = len(arr) - 1
 
     while floor <= ceil:
         mid_index = (floor + ceil) // 2
@@ -17,6 +18,10 @@ def bsearch(arr):
         else:
             floor = mid_index + 1
     return False
+
+if __name__ == '__main__':
+    bsearch([1,2,3,4,5,7,8,9,10])
+
 
 import unittest
 class TestBsearch(unittest.TestCase):
