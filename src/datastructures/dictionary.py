@@ -1,5 +1,6 @@
 from unittest import TestCase
 import string
+import random
 
 class LLNode:
     def __init__(self, key, value, next=None):
@@ -123,4 +124,21 @@ class DictionaryTest(TestCase):
         dictionary[key2] = value2
         self.assertEquals(value, dictionary[key])
         self.assertEquals(value2, dictionary[key2])
+
+    def test_handle_robustness(self):
+        dictionary = Dictionary()
+        a_dict = {}
+        for key in range(15215):
+            
+            key = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(20))
+            value = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(25))
+
+            a_dict[key] = value
+            dictionary[key] = value
+
+        for key in dictionary.keys:
+            self.assertEquals(a_dict[key], dictionary[key])
+
+    
+
 
