@@ -11,8 +11,11 @@
 }
 
 """
-def topologicalsort(graph):
+
+
+def topologicalsort2(graph):
     """
+    THIS SHOULD BE SOLVED WITH DFS SOMEHOW
     This is solving a graph dependency thing, if the graph is reveresed. Lets see if we can print a reverse chron list
         We can only do topological sorts on DAGs
         We should be sure to check that it is not acyclic
@@ -45,6 +48,24 @@ def topologicalsort(graph):
 
     return sortedSet
 
+
+def topologicalsort(graph):
+    
+    visited = set()
+
+
+    def dfs(node, stack, visited, graph):
+        if node:
+            visited.add(node)
+            for neighbor in graph[node]:
+                if neighbor not in visited:
+                    dfs(neighbor, stack, visited, graph)
+            stack.append(node)
+    stack = []
+    for node in graph.keys():
+        if node not in visited:
+            dfs(node, stack, visited, graph)
+    return stack[::-1]
 
 if __name__ == '__main__':
 
